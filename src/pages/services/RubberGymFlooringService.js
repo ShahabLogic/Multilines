@@ -1,9 +1,7 @@
-import React, { useContext }  from 'react';
+import React from 'react';
 import '../../styles/services.css';
-import { ConfigContext } from '../../context/ConfigContext';
 
 const RubberGymFlooringService = () => {
-    const { config } = useContext(ConfigContext);
     return (
         <div className="svc-page">
             <div className="svc-hero">
