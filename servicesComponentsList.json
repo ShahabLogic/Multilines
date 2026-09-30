@@ -1,0 +1,137 @@
+[
+  {
+    "path": "services/acrylic-sports-flooring",
+    "component": "AcrylicSportsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/epdm-running-tracks",
+    "component": "EpdmRunningTracksService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/epoxy-flooring",
+    "component": "EpoxyFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/gym-flooring",
+    "component": "GymFlooringService",
+    "imageCount": 3
+  },
+  {
+    "path": "services/heat-resistant-and-uv-protected-flooring",
+    "component": "HeatResistantAndUvProtectedFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-badminton-courts-flooring",
+    "component": "IndoorBadmintonCourtsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-basketball-courts-flooring",
+    "component": "IndoorBasketballCourtsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-futsal-flooring",
+    "component": "IndoorFutsalFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-paddle-tennis-flooring",
+    "component": "IndoorPaddleTennisFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-pickleball-flooring",
+    "component": "IndoorPickleballFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/indoor-volleyball-court-flooring",
+    "component": "IndoorVolleyballCourtFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/multi-purpose-courts-flooring",
+    "component": "MultiPurposeCourtsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-basketball-courts-flooring",
+    "component": "OutdoorBasketballCourtsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-futsal-flooring",
+    "component": "OutdoorFutsalFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-paddle-tennis-flooring",
+    "component": "OutdoorPaddleTennisFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-pickleball-flooring",
+    "component": "OutdoorPickleballFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-tennis-courts-flooring",
+    "component": "OutdoorTennisCourtsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/outdoor-volleyball-court-flooring",
+    "component": "OutdoorVolleyballCourtFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/play-area-flooring",
+    "component": "PlayAreaFlooringService",
+    "imageCount": 4
+  },
+  {
+    "path": "services/polyurethane-floor",
+    "component": "PolyurethaneFloorService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/polyurethane-pu-sports-flooring",
+    "component": "PolyurethanePuSportsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/rubber-gym-flooring",
+    "component": "RubberGymFlooringService",
+    "imageCount": 0
+  },
+  {
+    "path": "services/rubber-sports-flooring",
+    "component": "RubberSportsFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/running-track",
+    "component": "RunningTrackService",
+    "imageCount": 4
+  },
+  {
+    "path": "services/shock-absorbing-flooring",
+    "component": "ShockAbsorbingFlooringService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/sports-courts",
+    "component": "SportsCourtsService",
+    "imageCount": 8
+  },
+  {
+    "path": "services/sports-flooring",
+    "component": "SportsFlooringService",
+    "imageCount": 8
+  }
+]

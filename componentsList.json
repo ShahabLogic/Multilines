@@ -1,0 +1,46 @@
+[
+  {
+    "path": "about-us",
+    "component": "AboutNew"
+  },
+  {
+    "path": "best-flooring-for-warehouses-pakistan",
+    "component": "BestFlooringForWarehousesPakistan"
+  },
+  {
+    "path": "contact-us",
+    "component": "ContactNew"
+  },
+  {
+    "path": "indoor-sports-flooring",
+    "component": "IndoorSportsFlooring"
+  },
+  {
+    "path": "multi-sport-flooring",
+    "component": "MultiSportFlooring"
+  },
+  {
+    "path": "outdoor-sports-flooring",
+    "component": "OutdoorSportsFlooring"
+  },
+  {
+    "path": "rubber-sports-flooring",
+    "component": "RubberSportsFlooring"
+  },
+  {
+    "path": "schedule-a-consultation",
+    "component": "ScheduleAConsultation"
+  },
+  {
+    "path": "specialized-sports-flooring",
+    "component": "SpecializedSportsFlooring"
+  },
+  {
+    "path": "sports-flooring-repair-and-resurfacing",
+    "component": "SportsFlooringRepairAndResurfacing"
+  },
+  {
+    "path": "uv-resistant-acrylic-sports-court-flooring",
+    "component": "UvResistantAcrylicSportsCourtFlooring"
+  }
+]
