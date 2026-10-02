@@ -80,7 +80,7 @@ html[data-theme='dark'] .eyebrow{color:#d4a980}
 .site-header__inner{display:flex;height:100%;align-items:center;justify-content:space-between;gap:24px}
 .site-header__brand{display:flex;align-items:center;flex:none}
 .desktop-nav{display:flex;height:100%;align-items:center;gap:25px}
-.nav-link{position:relative;display:flex;height:100%;align-items:center;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.045em;transition:color .2s ease}
+.nav-link{position:relative;display:flex;height:100%;align-items:center;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.045em;transition:color .2s ease}
 .nav-link::after{position:absolute;right:0;bottom:20px;left:0;height:1px;background:var(--accent);content:'';transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
 .nav-link:hover,.nav-link.is-active{color:var(--ink)}
 .nav-link:hover::after,.nav-link.is-active::after{transform:scaleX(1)}
