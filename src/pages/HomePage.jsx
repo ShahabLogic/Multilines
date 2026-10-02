@@ -61,7 +61,7 @@ export default function HomePage() {
     { title: 'Products', note: 'Coatings & systems', to: '/products', icon: <FiPackage />, image: '/images/services/worker-roller.jpg' },
     { title: 'Gallery', note: 'Surface references', to: '/projects', icon: <FiImage />, image: '/images/services/metallic-1.webp' }
   ];
-  const facebookVideoUrl = 'https://www.facebook.com/share/v/1DAKPz2T25/';
+  const facebookVideoUrl = 'https://www.facebook.com/reel/1587397435736849';
 
   useEffect(() => {
     if (paused) return undefined;
