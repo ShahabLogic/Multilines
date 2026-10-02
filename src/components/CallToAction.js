@@ -1,17 +1,7 @@
 import React from 'react';
-import '../styles/CallToAction.css';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { FiArrowUpRight } from 'react-icons/fi';
 
-function CallToAction(props) {
-    return (
-        <aside className="action--background">
-            <div className="wrapper action--flex">
-                <h2 className="title action--title">Come visit our showroom and talk to one of our knowledgeable professionals today!</h2>
-                <Link to="/contact" className="btn">Call to make an appointment</Link>
-                <h3 className="action--number">(845) 294-9466</h3>
-            </div>
-        </aside>
-    );
+export default function CallToAction() {
+  return <section className="footer-callout"><div className="container footer-callout__inner"><div><span className="eyebrow eyebrow--light">Have a surface in mind?</span><h2>Let's get the details <em>right.</em></h2></div><Link to="/contact" className="button button--light">Talk to a coatings specialist <FiArrowUpRight /></Link></div></section>;
 }
-
-export default CallToAction;

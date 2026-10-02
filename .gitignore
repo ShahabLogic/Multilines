@@ -8,10 +8,18 @@
 # testing
 /coverage
 
+# Local persisted application data (keep the starter product catalogue tracked)
+/data/site-settings.json
+/data/inquiries.json
+/data/admin-user.json
+/data/admin-session-secret
+/data/uploads/
+
 # production
 /build
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local

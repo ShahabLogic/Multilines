@@ -1,0 +1,12 @@
+/* Service reference imagery and responsive labels */
+.service-detail-hero__visual-label{position:absolute;right:16px;bottom:64px;display:flex;min-width:150px;flex-direction:column;align-items:flex-end;gap:4px;padding:10px 12px;border-right:2px solid #e0b28d;background:rgba(17,28,22,.58);color:#fff;backdrop-filter:blur(8px)}
+.service-detail-hero__reference-number{font-family:var(--serif);font-size:16px;letter-spacing:.04em}
+.service-detail-hero__reference-type{color:rgba(255,255,255,.73);font-size:6px;font-weight:700;letter-spacing:.12em}
+.projects-reference-note{max-width:470px;margin:16px 0 0;color:var(--muted);font-size:8px;line-height:1.7}
+
+@media(max-width:720px){
+  .service-detail-hero__visual-label{right:12px;bottom:41px;min-width:130px;padding:8px 9px}
+  .service-detail-hero__reference-number{font-size:13px}
+  .service-detail-hero__reference-type{font-size:5px}
+  .projects-reference-note{font-size:7px}
+}
