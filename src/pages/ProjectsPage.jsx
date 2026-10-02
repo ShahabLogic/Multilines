@@ -1,42 +1,171 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
+import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX, FiZoomIn, FiCamera } from 'react-icons/fi';
 
-const references = [
-  { src: '/images/service-references/industrial-floor-reference.webp', category: 'Epoxy & PU', title: 'High-gloss industrial flooring', note: 'Reflective resin finish' },
-  { src: '/images/services/warehouse-application.jpg', category: 'Epoxy & PU', title: 'Seamless warehouse floor', note: 'Industrial floor reference' },
-  { src: '/images/services/gray-matte.jpg', category: 'Epoxy & PU', title: 'Decorative resin detail', note: 'Colour and sheen options' },
-  { src: '/images/services/car-showroom.webp', category: 'Epoxy & PU', title: 'Commercial showroom floor', note: 'Smooth coated surface' },
-  { src: '/images/services/roller-closeup.jpg', category: 'Application', title: 'Floor coating application', note: 'Illustrative application reference' },
-  { src: '/images/service-references/concrete-floor-repair-reference.webp', category: 'Application', title: 'Concrete preparation', note: 'Repair and substrate preparation' },
-  { src: '/images/roof-waterproofing.webp', category: 'Protection', title: 'Roof waterproofing', note: 'Continuous membrane application' },
-  { src: '/images/services/metallic-1.webp', category: 'Decorative', title: 'Metallic resin finish', note: 'Custom marbled effect' },
-  { src: '/images/services/garage-flake-1.jpg', category: 'Decorative', title: 'Decorative flake flooring', note: 'Broadcast finish reference' },
-  { src: '/images/service-references/sports-courts.webp', category: 'Sports surfaces', title: 'Multi-court layout', note: 'Court colours and markings' },
-  { src: '/images/service-references/acrylic-sports-flooring.webp', category: 'Sports surfaces', title: 'Acrylic sports court', note: 'Colour-zoned surface reference' },
-  { src: '/images/service-references/epdm-running-tracks.webp', category: 'Sports surfaces', title: 'EPDM running track', note: 'Lane texture and markings' },
-  { src: '/images/service-references/pu-sports-flooring.webp', category: 'Sports surfaces', title: 'Indoor sports hall', note: 'Resilient court surface' },
-  { src: '/images/service-references/indoor-padel.webp', category: 'Sports surfaces', title: 'Indoor racket court', note: 'Court colour and play zones' },
-  { src: '/images/service-references/play-area-flooring.webp', category: 'Sports surfaces', title: 'Play area surfacing', note: 'Colourful recreation zone' },
-  { src: '/images/service-references/outdoor-volleyball.webp', category: 'Sports surfaces', title: 'Outdoor volleyball setting', note: 'Sport and surface reference' },
-  { src: '/images/services/pharma-cleanroom.jpg', category: 'Epoxy & PU', title: 'Hygienic interior floor', note: 'Seamless cleanable finish' },
-  { src: '/images/services/food-meat.jpg', category: 'Epoxy & PU', title: 'Process-area floor', note: 'Commercial coating reference' }
+const projectImages = [
+  { src: '/images/projects/129630419_199520691712129_3634453926784757723_n.jpg',  label: 'Flooring project installation',   category: 'Flooring' },
+  { src: '/images/projects/129979646_199520508378814_2306330965378185821_n.jpg',  label: 'Surface preparation work',        category: 'Preparation' },
+  { src: '/images/projects/139657244_225619095768955_7729929713011800627_n.jpg',  label: 'Completed resin floor',           category: 'Flooring' },
+  { src: '/images/projects/139986355_225619092435622_222913958513365386_n.jpg',   label: 'Coating application',             category: 'Flooring' },
+  { src: '/images/projects/140036385_225610949103103_3970295486630304988_n.jpg',  label: 'Project site overview',           category: 'Site' },
+  { src: '/images/projects/149016264_242399017424296_7745133879021267945_n.jpg',  label: 'Floor installation detail',       category: 'Flooring' },
+  { src: '/images/projects/149724167_242399004090964_876500959364563657_n.jpg',   label: 'Industrial floor surface',        category: 'Industrial' },
+  { src: '/images/projects/149852910_241767484154116_4225723873362978298_n.jpg',  label: 'Seamless coating finish',         category: 'Flooring' },
+  { src: '/images/projects/150134645_241767477487450_4802727211642718034_n.jpg',  label: 'Surface texture detail',          category: 'Flooring' },
+  { src: '/images/projects/150408441_241767480820783_6452618882395085604_n.jpg',  label: 'Completed project',               category: 'Site' },
+  { src: '/images/projects/482059114_1198189095647215_5553565269521027189_n.jpg', label: 'Sports court installation',       category: 'Sports' },
+  { src: '/images/projects/489987430_1229670559165735_3689474475460943011_n.jpg', label: 'Court marking and lines',         category: 'Sports' },
+  { src: '/images/projects/490142773_1230685682397556_8399292662101284777_n.jpg', label: 'Outdoor sports surface',          category: 'Sports' },
+  { src: '/images/projects/490235597_1229670632499061_6106977580366082924_n.jpg', label: 'Court colour application',        category: 'Sports' },
+  { src: '/images/projects/490297283_1229670665832391_1427835776583430237_n.jpg', label: 'Court layout overview',           category: 'Sports' },
+  { src: '/images/projects/490471022_1229670519165739_5286301038449740840_n.jpg', label: 'Surface application progress',    category: 'Flooring' },
+  { src: '/images/projects/490570424_1229670655832392_1536126022276090621_n.jpg', label: 'Basketball court markings',       category: 'Sports' },
+  { src: '/images/projects/490776819_1230685665730891_8492589139342378917_n.jpg', label: 'Completed sports facility',       category: 'Sports' },
+  { src: '/images/projects/492517459_1245853564214101_7776406751143090716_n.jpg', label: 'Industrial flooring project',     category: 'Industrial' },
+  { src: '/images/projects/492696592_1245853877547403_3242108149821157621_n.jpg', label: 'Epoxy floor detail',              category: 'Flooring' },
+  { src: '/images/projects/493312766_1246314020834722_6881818508168744929_n.jpg', label: 'Site completion photo',           category: 'Site' },
+  { src: '/images/projects/493330809_1246314007501390_5920210529529358215_n.jpg', label: 'Floor installation complete',     category: 'Flooring' },
+  { src: '/images/projects/493535085_1246314010834723_3251019412779944959_n.jpg', label: 'Protective coating application',  category: 'Protection' },
+  { src: '/images/projects/493731422_1245853810880743_5121339361677367971_n.jpg', label: 'Surface quality check',           category: 'Flooring' },
+  { src: '/images/projects/493844049_1248403503959107_5711786868958642903_n.jpg', label: 'Finished project handover',       category: 'Site' },
+  { src: '/images/projects/756525566_1672443518221768_1872788740938167713_n.jpg', label: 'Recent sports court project',     category: 'Sports' },
 ];
-const filters = ['All', 'Epoxy & PU', 'Sports surfaces', 'Application', 'Protection', 'Decorative'];
 
-export default function ProjectsPage() {
-  const [filter, setFilter] = useState('All');
-  const [active, setActive] = useState(null);
-  const visible = useMemo(() => filter === 'All' ? references : references.filter((item) => item.category === filter), [filter]);
-  const shift = (direction) => setActive((index) => (index + direction + visible.length) % visible.length);
+const CATS = ['All', 'Flooring', 'Sports', 'Industrial', 'Protection', 'Site', 'Preparation'];
+
+/* span pattern cycles: wide / normal / normal / tall / normal / wide / normal / tall … */
+const SPAN_PATTERN = ['wide', 'normal', 'normal', 'tall', 'normal', 'wide', 'tall', 'normal', 'normal', 'wide', 'normal', 'tall'];
+
+function Lightbox({ images, index, onClose, onPrev, onNext }) {
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'ArrowRight') onNext();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose, onPrev, onNext]);
 
   return (
-    <main className="inner-page projects-page">
-      <section className="page-hero page-hero--projects"><div className="container page-hero__grid"><div className="page-hero__copy"><div className="breadcrumbs"><Link to="/">Home</Link><span>/</span><span>Gallery</span></div><p className="eyebrow">SURFACE REFERENCES · MATERIAL INSPIRATION</p><h1>Look closer.<br /><em>Think beyond.</em></h1><p>Explore industrial floors, coating application and sports-surface references to help you picture materials, colours and finishes for your own site.</p><div className="page-hero__actions"><Link to="/contact" className="button button--accent">Discuss a project <FiArrowUpRight /></Link><span className="location-chip">Epoxy · Sports · Protection</span></div><p className="projects-reference-note">Images are illustrative references and are not represented as verified Multilines installations.</p></div><div className="projects-hero-mosaic"><img src="/images/services/metallic-1.webp" alt="Illustrative metallic resin surface reference" /><div><img src="/images/service-references/sports-courts.webp" alt="Illustrative outdoor sport court reference" /><img src="/images/service-references/industrial-floor-reference.webp" alt="Illustrative high-gloss industrial floor reference" /></div><span>FINISH / COLOUR / APPLICATION</span></div></div></section>
+    <div className="glb-overlay" onClick={(e) => e.target === e.currentTarget && onClose()} role="dialog" aria-modal="true">
+      <button className="glb-close" onClick={onClose} aria-label="Close"><FiX /></button>
+      <button className="glb-arrow glb-arrow--left" onClick={onPrev} aria-label="Previous"><FiChevronLeft /></button>
+      <div className="glb-content">
+        <img src={images[index].src} alt={images[index].label} className="glb-img" />
+        <div className="glb-caption">
+          <span>{images[index].label}</span>
+          <span className="glb-counter">{index + 1} / {images.length}</span>
+        </div>
+      </div>
+      <button className="glb-arrow glb-arrow--right" onClick={onNext} aria-label="Next"><FiChevronRight /></button>
+    </div>
+  );
+}
 
-      <section className="section project-gallery-section" data-reveal><div className="container"><div className="section-heading-row"><div><div className="section-index"><span>01</span><i /> SURFACE GALLERY</div><h2>Surfaces in<br /><em>their element.</em></h2></div><p>Filter by surface family to explore application examples. Final finishes depend on the site, selected products and installation specification.</p></div><div className="gallery-filters" role="group" aria-label="Filter image references">{filters.map((item) => <button key={item} className={filter === item ? 'is-active' : ''} type="button" aria-pressed={filter === item} onClick={() => { setFilter(item); setActive(null); }}>{item}</button>)}</div><div className="project-gallery-grid">{visible.map((reference, index) => <button className={`project-tile project-tile--${index % 5}`} key={reference.src} type="button" onClick={() => setActive(index)} aria-label={`View ${reference.title}`}><img src={reference.src} alt={`${reference.title} illustrative reference`} loading="lazy" /><span className="project-tile__overlay"><small>{reference.category}</small><strong>{reference.title}</strong><i>{reference.note} <FiArrowUpRight /></i></span></button>)}</div></div></section>
+export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
-      {active !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label={visible[active].title} onClick={(event) => { if (event.target === event.currentTarget) setActive(null); }}><button className="lightbox__close" type="button" onClick={() => setActive(null)} aria-label="Close image"><FiX /></button><button className="lightbox__arrow lightbox__arrow--left" type="button" onClick={() => shift(-1)} aria-label="Previous image"><FiChevronLeft /></button><figure><img src={visible[active].src} alt={`${visible[active].title} illustrative reference`} /><figcaption><small>{visible[active].category}</small><strong>{visible[active].title}</strong><span>{visible[active].note} · Illustrative reference</span></figcaption></figure><button className="lightbox__arrow lightbox__arrow--right" type="button" onClick={() => shift(1)} aria-label="Next image"><FiChevronRight /></button></div>}
+  const filtered = activeFilter === 'All' ? projectImages : projectImages.filter((p) => p.category === activeFilter);
+  const open = useCallback((i) => setLightboxIndex(i), []);
+  const close = useCallback(() => setLightboxIndex(null), []);
+  const prev = useCallback(() => setLightboxIndex((i) => (i - 1 + filtered.length) % filtered.length), [filtered.length]);
+  const next = useCallback(() => setLightboxIndex((i) => (i + 1) % filtered.length), [filtered.length]);
+
+  return (
+    <main className="prj-page">
+
+      {/* ── Hero ──────────────────────────────────────────────── */}
+      <section className="prj-hero">
+        <div className="prj-hero__mosaic">
+          {[projectImages[12], projectImages[16], projectImages[18], projectImages[2], projectImages[9]].map((img) => (
+            <div className="prj-hero__mosaic-cell" key={img.src}>
+              <img src={img.src} alt="" aria-hidden="true" />
+            </div>
+          ))}
+          <div className="prj-hero__mosaic-overlay" />
+        </div>
+        <div className="container prj-hero__inner">
+          <div className="prj-hero__breadcrumb"><Link to="/">Home</Link><span>/</span><span>Projects</span></div>
+          <p className="prj-hero__eyebrow"><FiCamera /> COMPLETED PROJECTS</p>
+          <h1 className="prj-hero__title">Work that<br /><em>speaks for itself.</em></h1>
+          <p className="prj-hero__sub">From industrial warehouses to world-class sports courts — browse our portfolio of completed installations across Pakistan.</p>
+          <div className="prj-hero__actions">
+            <Link to="/contact" className="button button--accent">Get a free quote <FiArrowUpRight /></Link>
+            <Link to="/gallery" className="prj-hero__alt">Browse Gallery <FiArrowUpRight /></Link>
+          </div>
+          <div className="prj-hero__chips">
+            <span>Epoxy & PU</span><span>Sports courts</span><span>Running tracks</span><span>Waterproofing</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Filter Bar ────────────────────────────────────────── */}
+      <section className="prj-grid-section">
+        <div className="container">
+          <div className="prj-header">
+            <div>
+              <h2 className="prj-section-title">Our<br /><em>projects.</em></h2>
+              <p className="prj-section-desc">Real installations by our team. Click any photo to view it in full detail.</p>
+            </div>
+            <div className="prj-filters" role="group" aria-label="Filter projects by category">
+              {CATS.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  className={`prj-filter-btn${activeFilter === cat ? ' is-active' : ''}`}
+                  onClick={() => { setActiveFilter(cat); setLightboxIndex(null); }}
+                  aria-pressed={activeFilter === cat}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Premium grid ─── */}
+          <div className="prj-grid">
+            {filtered.map((item, i) => {
+              const span = SPAN_PATTERN[i % SPAN_PATTERN.length];
+              return (
+                <button
+                  key={item.src}
+                  type="button"
+                  className={`prj-tile prj-tile--${span}`}
+                  onClick={() => open(i)}
+                  aria-label={`View: ${item.label}`}
+                >
+                  <img src={item.src} alt={item.label} loading="lazy" />
+                  <div className="prj-tile__overlay">
+                    <span className="prj-tile__cat">{item.category}</span>
+                    <span className="prj-tile__label">{item.label}</span>
+                    <FiZoomIn className="prj-tile__zoom" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────────── */}
+      <section className="prj-cta">
+        <div className="container prj-cta__inner">
+          <div>
+            <h2>Your project could be<br /><em>next.</em></h2>
+            <p>Let's discuss your requirements and build something exceptional.</p>
+          </div>
+          <div className="prj-cta__btns">
+            <Link to="/contact" className="button button--light">Request a site survey <FiArrowUpRight /></Link>
+            <Link to="/gallery" className="prj-cta__link">View full gallery <FiArrowUpRight /></Link>
+          </div>
+        </div>
+      </section>
+
+      {lightboxIndex !== null && (
+        <Lightbox images={filtered} index={lightboxIndex} onClose={close} onPrev={prev} onNext={next} />
+      )}
     </main>
   );
 }

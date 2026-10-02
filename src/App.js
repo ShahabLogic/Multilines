@@ -8,6 +8,7 @@ import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import SystemsPage from './pages/SystemsPage';
 import ProjectsPage from './pages/ProjectsPage';
+import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import AppearancePage from './pages/AppearancePage';
 import ProductsPage from './pages/ProductsPage';
@@ -33,7 +34,8 @@ function RouteEffects() {
       '/about': `About | ${settings.companyName}`,
       '/services': `Flooring & Coating Services | ${settings.companyName}`,
       '/systems': `Coating Systems | ${settings.companyName}`,
-      '/projects': `Gallery | ${settings.companyName}`,
+      '/projects': `Projects | ${settings.companyName}`,
+      '/gallery': `Gallery | ${settings.companyName}`,
       '/products': `Products | ${settings.companyName}`,
       '/cart': `Product Order List | ${settings.companyName}`,
       '/paints': `Paints & Coatings | ${settings.companyName}`,
@@ -84,7 +86,7 @@ export default function App() {
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
         <Route path="/systems" element={<SystemsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/gallery" element={<Navigate to="/projects" replace />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/cart" element={<CartPage />} />

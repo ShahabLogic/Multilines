@@ -76,6 +76,7 @@ export function SiteHeader() {
             <NavLink to="/paints" className={({ isActive }) => isActive ? 'nav-link is-active' : 'nav-link'}>Paints</NavLink>
             <NavLink to="/systems" className={({ isActive }) => isActive ? 'nav-link is-active' : 'nav-link'}>Systems</NavLink>
             <NavLink to="/projects" className={({ isActive }) => isActive ? 'nav-link is-active' : 'nav-link'}>Projects</NavLink>
+            <NavLink to="/gallery" className={({ isActive }) => isActive ? 'nav-link is-active' : 'nav-link'}>Gallery</NavLink>
             <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link is-active' : 'nav-link'}>Contact</NavLink>
           </nav>
           <div className="site-header__actions">
@@ -97,7 +98,8 @@ export function SiteHeader() {
           <NavLink to="/products">Products</NavLink>
           <NavLink to="/paints">Paints & coatings</NavLink>
           <NavLink to="/systems">Systems</NavLink>
-          <NavLink to="/projects">Gallery</NavLink>
+          <NavLink to="/projects">Projects</NavLink>
+          <NavLink to="/gallery">Gallery</NavLink>
           <Link to="/cart" className="mobile-menu__cart"><FiShoppingBag /> Product cart ({cartCount})</Link>
           <NavLink to="/contact">Contact</NavLink>
           <Link to="/admin/config" className="mobile-menu__settings"><FiSettings /> Global appearance</Link>
@@ -130,7 +132,7 @@ export function SiteFooter() {
           <p>Industrial and commercial flooring, sports surfaces, concrete repair and protective coatings—planned for the way your space works.</p>
           <a className="footer-social" href={settings.facebookUrl} target="_blank" rel="noreferrer" aria-label="Visit Multilines Coating Solutions on Facebook"><FaFacebookF /> Follow our work <FiArrowUpRight /></a>
         </div>
-        <div className="footer-column"><span className="footer-heading">Explore</span><Link to="/about">About us</Link><Link to="/services">All services</Link><Link to="/products">Products</Link><Link to="/paints">Paints & coatings</Link><Link to="/systems">Coating systems</Link><Link to="/projects">Gallery</Link><Link to="/contact">Contact</Link></div>
+        <div className="footer-column"><span className="footer-heading">Explore</span><Link to="/about">About us</Link><Link to="/services">All services</Link><Link to="/products">Products</Link><Link to="/paints">Paints &amp; coatings</Link><Link to="/systems">Coating systems</Link><Link to="/projects">Projects</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact</Link></div>
         <div className="footer-column"><span className="footer-heading">Expertise</span>{footerServices.map((service) => <Link key={service.slug} to={`/services/${service.slug}`}>{service.title}</Link>)}</div>
         <div className="footer-column footer-contact"><span className="footer-heading">Get in touch</span><a href={phoneLink(settings.phone)}>{settings.phone}</a><a href={`mailto:${settings.email}`}>{settings.email}</a><span>{settings.address}</span><a className="footer-map-link" href={`https://maps.google.com/?q=${encodeURIComponent(settings.mapQuery)}`} target="_blank" rel="noreferrer">Open location <FiArrowUpRight /></a><Link to="/admin/config" className="footer-settings"><FiSettings /> Global appearance</Link><Link to="/admin/products" className="footer-settings"><FiSettings /> Product admin</Link></div>
       </div>

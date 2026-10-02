@@ -212,10 +212,32 @@ export default function HomePage() {
 
       <section className="section section--project-teaser" data-reveal>
         <div className="container project-teaser">
-          <div className="project-teaser__copy"><div className="section-index"><span>06</span><i /> SELECTED SURFACES</div><h2>See the finish.<br /><em>Picture the potential.</em></h2><p>Explore a selection of coating, sports and flooring references. Every space is different—our team can help translate a reference into a system suited to your project.</p><Link to="/projects" className="button button--dark">View project gallery <FiArrowUpRight /></Link></div>
+          <div className="project-teaser__copy"><div className="section-index"><span>06</span><i /> SELECTED SURFACES</div><h2>See the finish.<br /><em>Picture the potential.</em></h2><p>Explore a selection of coating, sports and flooring references. Every space is different—our team can help translate a reference into a system suited to your project.</p><div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}><Link to="/projects" className="button button--dark">View projects <FiArrowUpRight /></Link><Link to="/gallery" className="button button--outline">Browse gallery <FiArrowUpRight /></Link></div></div>
           <div className="project-teaser__visual"><img src="/images/services/metallic-1.webp" alt="Reflective metallic resin floor with a custom marbled finish" loading="lazy" /><div className="project-teaser__small"><img src="/images/service-references/pu-sports-flooring.webp" alt="Indoor sports hall surface reference" loading="lazy" /></div><span className="project-teaser__caption">MATERIAL / MOTION / LIGHT</span></div>
+        </div>
+      </section>
+
+      {/* Gallery snapshot strip */}
+      <section className="section home-gallery-strip" data-reveal>
+        <div className="container">
+          <div className="home-gallery-strip__header">
+            <div>
+              <div className="section-index"><span>07</span><i /> OUR GALLERY</div>
+              <h2>Real photos.<br /><em>Real results.</em></h2>
+            </div>
+            <Link to="/gallery" className="button button--outline">View all photos <FiArrowUpRight /></Link>
+          </div>
+          <div className="home-gallery-strip__grid">
+            <Link to="/gallery" className="hgs-tile hgs-tile--tall"><img src="/images/gallery/753267066_1670452161754237_5244671406231355593_n.jpg" alt="Flooring project" loading="lazy" /><span>Gallery</span></Link>
+            <Link to="/gallery" className="hgs-tile"><img src="/images/gallery/490823179_1236054668527324_7628931044510625509_n.jpg" alt="Surface installation" loading="lazy" /></Link>
+            <Link to="/gallery" className="hgs-tile"><img src="/images/gallery/492120106_1243498517782939_3058602397724820343_n.jpg" alt="Court marking" loading="lazy" /></Link>
+            <Link to="/gallery" className="hgs-tile hgs-tile--wide"><img src="/images/gallery/764855168_1683036130495840_268628298850771745_n.jpg" alt="Project reference" loading="lazy" /></Link>
+            <Link to="/gallery" className="hgs-tile"><img src="/images/gallery/749330040_1668807811918672_4058649805619479008_n.jpg" alt="Finished floor" loading="lazy" /></Link>
+            <Link to="/projects" className="hgs-tile hgs-tile--cta"><span className="hgs-tile__cta-inner"><strong>26+ Projects</strong><small>See completed work</small><FiArrowUpRight /></span></Link>
+          </div>
         </div>
       </section>
     </main>
   );
 }
+
